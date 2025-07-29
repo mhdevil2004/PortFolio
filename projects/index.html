@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harish | Projects</title>
+    <style>
+        /* ===== Base Styles ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #e0e0e0;
+            background-color: #121212;
+            overflow-x: hidden;
+        }
+
+        @font-face {
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 400;
+            src: url(https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfMZg.ttf) format('truetype');
+        }
+
+        /* ===== Projects Section ===== */
+        .projects-section {
+            position: relative;
+            padding: 6rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            z-index: 10;
+        }
+
+        .projects-container {
+            background: rgba(30, 30, 30, 0.6);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 3rem;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Animated Title */
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 3rem;
+            text-align: center;
+            color: #ffffff;
+            position: relative;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s ease-out forwards;
+        }
+
+        .title-text {
+            position: relative;
+            display: inline-block;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .title-underline {
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%) scaleX(0);
+            width: 120px;
+            height: 3px;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            border-radius: 3px;
+            animation: underlineGrow 1.2s ease-out forwards;
+            animation-delay: 0.5s;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes underlineGrow {
+            to {
+                transform: translateX(-50%) scaleX(1);
+            }
+        }
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        /* Sequential card animations */
+        .project-card:nth-child(1) { animation: fadeInUp 0.8s ease-out 0.3s forwards; }
+        .project-card:nth-child(2) { animation: fadeInUp 0.8s ease-out 0.5s forwards; }
+        .project-card:nth-child(3) { animation: fadeInUp 0.8s ease-out 0.7s forwards; }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 16px 32px rgba(0, 0, 0, 0.3);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-title {
+            font-size: 1.4rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .project-title .icon {
+            font-size: 1.2rem;
+        }
+
+        .project-description {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tag {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .project-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.2s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn-demo {
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+            color: white;
+            flex: 1;
+        }
+
+        .btn-code {
+            background: rgba(255, 255, 255, 0.08);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        /* ===== Responsive Design ===== */
+        @media (max-width: 900px) {
+            .projects-section {
+                padding: 4rem 1.5rem;
+            }
+            
+            .projects-container {
+                padding: 2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .project-actions {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Projects Section -->
+    <section id="projects" class="projects-section">
+        <div class="projects-container">
+            <!-- Animated Title -->
+            <h2 class="section-title">
+                <span class="title-text">My Projects</span>
+                <span class="title-underline"></span>
+            </h2>
+            
+            <!-- Projects Grid -->
+            <div class="projects-grid">
+                <!-- ZohoVerse -->
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1593642634524-b40b5baae6bb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1480&q=80" alt="ZohoVerse" class="project-image">
+                    <div class="project-content">
+                        <h3 class="project-title">
+                            <span class="icon">🔗</span>
+                            ZohoVerse – AI Career Platform
+                        </h3>
+                        <p class="project-description">
+                            A modular AI-powered platform for aspiring Zohoians with resume builder, AI chatbot, job portal, and DSA prep tools.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">#FullStack</span>
+                            <span class="tag">#AI</span>
+                            <span class="tag">#Career</span>
+                        </div>
+                        <div class="project-actions">
+                            <a href="https://zoho-verse.vercel.app" target="_blank" class="btn btn-demo">Live Demo</a>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- ProHike -->
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="ProHike" class="project-image">
+                    <div class="project-content">
+                        <h3 class="project-title">
+                            <span class="icon">🚀</span>
+                            ProHike – Project Showcase
+                        </h3>
+                        <p class="project-description">
+                            A portfolio meets hiring platform where creators upload and tag projects to get noticed by recruiters with smart tagging and AI feedback.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">#WebApp</span>
+                            <span class="tag">#Portfolio</span>
+                            <span class="tag">#UI/UX</span>
+                        </div>
+                        <div class="project-actions">
+                            <a href="https://prohike.vercel.app" target="_blank" class="btn btn-demo">Live Demo</a>
+                           
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- ProDash -->
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="ProDash" class="project-image">
+                    <div class="project-content">
+                        <h3 class="project-title">
+                            <span class="icon">📊</span>
+                            ProDash – Admin Dashboard
+                        </h3>
+                        <p class="project-description">
+                            Clean and functional admin dashboard UI for modern SaaS applications with responsive layout, analytics, and dark mode.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">#Dashboard</span>
+                            <span class="tag">#React</span>
+                            <span class="tag">#Responsive</span>
+                        </div>
+                        <div class="project-actions">
+                            <a href="https://pro-dash-gules.vercel.app" target="_blank" class="btn btn-demo">Live Demo</a>
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

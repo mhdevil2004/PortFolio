@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harish | Skills</title>
+    <style>
+        /* ===== Base Styles ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #e0e0e0;
+            background-color: #121212;
+            overflow-x: hidden;
+        }
+
+        @font-face {
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 400;
+            src: url(https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfMZg.ttf) format('truetype');
+        }
+
+        /* ===== Skills Section ===== */
+        .skills-section {
+            position: relative;
+            padding: 6rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            z-index: 10;
+        }
+
+        .skills-container {
+            background: rgba(30, 30, 30, 0.6);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 3rem;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Animated Title */
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 3rem;
+            text-align: center;
+            color: #ffffff;
+            position: relative;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s ease-out forwards;
+        }
+
+        .title-text {
+            position: relative;
+            display: inline-block;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .title-underline {
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%) scaleX(0);
+            width: 120px;
+            height: 3px;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            border-radius: 3px;
+            animation: underlineGrow 1.2s ease-out forwards;
+            animation-delay: 0.5s;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes underlineGrow {
+            to {
+                transform: translateX(-50%) scaleX(1);
+            }
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        /* Sequential card animations */
+        .skill-card:nth-child(1) { animation: fadeInUp 0.8s ease-out 0.3s forwards; }
+        .skill-card:nth-child(2) { animation: fadeInUp 0.8s ease-out 0.5s forwards; }
+        .skill-card:nth-child(3) { animation: fadeInUp 0.8s ease-out 0.7s forwards; }
+        .skill-card:nth-child(4) { animation: fadeInUp 0.8s ease-out 0.9s forwards; }
+        .skill-card:nth-child(5) { animation: fadeInUp 0.8s ease-out 1.1s forwards; }
+        .skill-card:nth-child(6) { animation: fadeInUp 0.8s ease-out 1.3s forwards; }
+
+        .skill-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+        }
+
+        .skill-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .skill-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            flex-shrink: 0;
+        }
+
+        .skill-title {
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: white;
+        }
+
+        .skill-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .skill-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+        }
+
+        .skill-item:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.05);
+        }
+
+        /* Category-specific colors */
+        .frontend { border-left: 4px solid #3b82f6; }
+        .backend { border-left: 4px solid #8b5cf6; }
+        .database { border-left: 4px solid #10b981; }
+        .ai { border-left: 4px solid #ec4899; }
+        .dev-tools { border-left: 4px solid #f59e0b; }
+        .soft-skills { border-left: 4px solid #6366f1; }
+
+        /* ===== Responsive Design ===== */
+        @media (max-width: 768px) {
+            .skills-section {
+                padding: 4rem 1.5rem;
+            }
+            
+            .skills-container {
+                padding: 2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .skill-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+            
+            .skill-items {
+                gap: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Skills Section -->
+    <section id="skills" class="skills-section">
+        <div class="skills-container">
+            <!-- Animated Title -->
+            <h2 class="section-title">
+                <span class="title-text">Tech Stack</span>
+                <span class="title-underline"></span>
+            </h2>
+            
+            <!-- Skills Grid -->
+            <div class="skills-grid">
+                <!-- Frontend Card -->
+                <div class="skill-card frontend">
+                    <div class="skill-header">
+                        <div class="skill-icon">🖥️</div>
+                        <h3 class="skill-title">Frontend</h3>
+                    </div>
+                    <div class="skill-items">
+                        <span class="skill-item">HTML5</span>
+                        <span class="skill-item">CSS3</span>
+                        <span class="skill-item">JavaScript (ES6+)</span>
+                        <span class="skill-item">Responsive Design</span>
+                        <span class="skill-item">UI/UX Design (Figma)</span>
+                    </div>
+                </div>
+                
+                <!-- Backend Card -->
+                <div class="skill-card backend">
+                    <div class="skill-header">
+                        <div class="skill-icon">⚙️</div>
+                        <h3 class="skill-title">Backend</h3>
+                    </div>
+                    <div class="skill-items">
+                        <span class="skill-item">Node.js</span>
+                        <span class="skill-item">Express.js</span>
+                        <span class="skill-item">REST APIs</span>
+                    </div>
+                </div>
+                
+                <!-- Database Card -->
+                <div class="skill-card database">
+                    <div class="skill-header">
+                        <div class="skill-icon">🗄️</div>
+                        <h3 class="skill-title">Database</h3>
+                    </div>
+                    <div class="skill-items">
+                        <span class="skill-item">MongoDB</span>
+                        <span class="skill-item">Mongoose</span>
+                    </div>
+                </div>
+                
+                <!-- AI/ML Card -->
+                <div class="skill-card ai">
+                    <div class="skill-header">
+                        <div class="skill-icon">🧠</div>
+                        <h3 class="skill-title">AI/ML</h3>
+                    </div>
+                    <div class="skill-items">
+                        <span class="skill-item">Gemini API</span>
+                        <span class="skill-item">Prompt Engineering</span>
+                        <span class="skill-item">MediaPipe</span>
+                    </div>
+                </div>
+                
+                <!-- Dev Tools Card -->
+                <div class="skill-card dev-tools">
+                    <div class="skill-header">
+                        <div class="skill-icon">🔧</div>
+                        <h3 class="skill-title">Dev Tools</h3>
+                    </div>
+                    <div class="skill-items">
+                        <span class="skill-item">Git</span>
+                        <span class="skill-item">GitHub</span>
+                        <span class="skill-item">Vercel</span>
+                        <span class="skill-item">Postman</span>
+                    </div>
+                </div>
+                
+                <!-- Soft Skills Card -->
+                <div class="skill-card soft-skills">
+                    <div class="skill-header">
+                        <div class="skill-icon">💡</div>
+                        <h3 class="skill-title">Soft Skills</h3>
+                    </div>
+                    <div class="skill-items">
+                        <span class="skill-item">Product Thinking</span>
+                        <span class="skill-item">Rapid Prototyping</span>
+                        <span class="skill-item">Communication</span>
+                        <span class="skill-item">Problem-Solving</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
